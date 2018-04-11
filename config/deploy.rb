@@ -55,6 +55,12 @@ set :deploy_via, :remote_cache
 set :deploy_to, "/home/#{fetch(:user)}/#{fetch(:application)}"
 set :rvm_ruby, '2.5.1'
 
+# Default value for :linked_files is []
+append :linked_files, "config/database.yml", "config/secrets.yml"
+
+# Default value for linked_dirs is []
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor/bundle"
+
 set :puma_role, :app
 set :puma_workers, 2
 set :puma_threads, [4, 16]
